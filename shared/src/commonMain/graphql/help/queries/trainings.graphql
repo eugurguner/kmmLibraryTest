@@ -1,0 +1,8 @@
+query trainings($where: QueryTrainingsForUserWhereWhereConditions!,
+    $orderBy: [QueryTrainingsForUserOrderByOrderByClause!]!, $first:Int!, $page:Int!) {
+    trainings_for_user(where:$where, orderBy:$orderBy,first: $first, page: $page) {
+        data {
+            ...fragmentTraining
+        }
+    }
+}

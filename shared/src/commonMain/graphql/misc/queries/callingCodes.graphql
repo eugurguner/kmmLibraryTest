@@ -1,0 +1,7 @@
+query callingCodes {
+    calling_codes(first: 50, page: 1, loginCodes: true, listingShareCodes: false) {
+        data {
+            ...fragmentCallingCode
+        }
+    }
+}

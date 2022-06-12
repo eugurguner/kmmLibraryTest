@@ -1,0 +1,5 @@
+mutation createInsurance($input: KoalayDefineDealerInput!) {
+    koalay_define_dealer(input: $input) {
+        ...fragmentInsurance
+    }
+}

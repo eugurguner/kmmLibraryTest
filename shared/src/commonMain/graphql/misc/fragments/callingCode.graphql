@@ -1,0 +1,7 @@
+fragment fragmentCallingCode on CallingCode {
+    id
+    value
+    description
+    key
+    flag
+}

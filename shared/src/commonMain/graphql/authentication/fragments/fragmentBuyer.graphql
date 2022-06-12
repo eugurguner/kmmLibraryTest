@@ -1,0 +1,10 @@
+fragment fragmentBuyer on Buyer {
+    id
+    deleted_at
+    demands {
+        id
+        buyer {
+            id
+        }
+    }
+}

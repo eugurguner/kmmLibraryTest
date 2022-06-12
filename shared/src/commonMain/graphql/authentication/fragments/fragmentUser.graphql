@@ -1,0 +1,10 @@
+fragment fragmentUser on User {
+    id
+    full_name
+    cell_phone
+    country_code
+    payment_url
+    avatarThumb
+    email
+    login_fizbot_agent
+}

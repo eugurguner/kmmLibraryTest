@@ -1,0 +1,8 @@
+mutation login($cellPhone: String!, $password: String!) {
+    login(input: {
+        password:$password,
+        username: $cellPhone
+    }) {
+        ...fragmentAuth
+    }
+}

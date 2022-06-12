@@ -1,0 +1,5 @@
+mutation addFeedback ($input: AddFeedbackInput!) {
+    addFeedback(input: $input) {
+        note
+    }
+}

@@ -1,0 +1,5 @@
+query checkInsurance($dealerCode: String!) {
+    koalay_dealer_info(dealerCode: $dealerCode) {
+        ...fragmentInsurance
+    }
+}

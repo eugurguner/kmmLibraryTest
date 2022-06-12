@@ -1,0 +1,9 @@
+fragment fragmentTraining on Training {
+    starts_at
+    ends_at
+    title
+    meeting_id
+    meeting_password
+    meeting_link
+    meeting_recording_link
+}

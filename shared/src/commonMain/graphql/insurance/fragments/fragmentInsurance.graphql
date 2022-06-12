@@ -1,0 +1,4 @@
+fragment fragmentInsurance on KoalayDealer {
+    url_konut
+    url_dask
+}
