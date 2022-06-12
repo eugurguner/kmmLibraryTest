@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("maven-publish")
+    id("com.apollographql.apollo3").version("3.3.0")
 }
 
 version = "1.0"
@@ -78,4 +79,8 @@ android {
         minSdk = 21
         targetSdk = 32
     }
+}
+
+apollo {
+    packageName.set("com.makswin.fizbot")
 }
