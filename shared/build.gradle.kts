@@ -1,6 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("native.cocoapods")
+    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
     id("com.android.library")
     id("maven-publish")
     id("com.apollographql.apollo3").version("3.3.0")
@@ -14,17 +14,22 @@ kotlin {
         publishLibraryVariants("release")
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        framework {
-            baseName = "shared"
+    ios {
+        binaries {
+            framework {
+                baseName = "Bifrost"
+            }
         }
+    }
+
+    multiplatformSwiftPackage {
+        packageName("Bifrost")
+        swiftToolsVersion("5.3")
+        targetPlatforms {
+            iOS { v("10") }
+        }
+        outputDirectory(File("/Users/alkincakiralar/Desktop/makswin/Bifrost-IOS-SDK", ""))
+        buildConfiguration { debug() }
     }
     
     sourceSets {
@@ -47,28 +52,17 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(kotlin("test-junit"))
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+                implementation("org.jetbrains.kotlin:kotlin-test-common:1.6.21")
+                implementation("org.jetbrains.kotlin:kotlin-test-annotations-common:1.6.21")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.0-M2")
+                implementation("io.mockk:mockk-common:1.9.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
             }
         }
-        val androidMain by getting
-        val androidTest by getting
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
-        }
-        val iosX64Test by getting
-        val iosArm64Test by getting
-        val iosSimulatorArm64Test by getting
-        val iosTest by creating {
-            dependsOn(commonTest)
-            iosX64Test.dependsOn(this)
-            iosArm64Test.dependsOn(this)
-            iosSimulatorArm64Test.dependsOn(this)
-        }
+
     }
 }
 
